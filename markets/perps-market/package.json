@@ -20,6 +20,7 @@
     "@synthetixio/common-config": "*",
     "@synthetixio/core-contracts": "1.1.1",
     "@synthetixio/core-modules": "*",
+    "@synthetixio/spot-market": "*",
     "@synthetixio/main": "3.0.1",
     "@synthetixio/router": "*",
     "node-fetch": "2.6.9",
