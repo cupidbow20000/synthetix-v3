@@ -253,7 +253,7 @@ library PerpsAccount {
         Data storage self,
         uint128 accountId
     ) internal returns (int totalAccountOpenInterest, uint accountMaxOpenInterest) {
-        totalAccountOpenInterest = getTotalAccountOpenInterest(self, accountId);
+        totalAccountOpenInterest = getTotalNotionalOpenInterest(self, accountId);
 
         uint totalCollateralValue = getTotalCollateralValue(self);
 
@@ -261,10 +261,10 @@ library PerpsAccount {
         accountMaxOpenInterest = totalCollateralValue.mulDecimal(maxLeverage);
     }
 
-    function getTotalAccountOpenInterest(
+    function getTotalNotionalOpenInterest(
         Data storage self,
         uint128 accountId
-    ) private view returns (int totalAccountOpenInterest) {
+    ) private view returns (int totalAccountOpenInterest, int totalPnl) {
         for (uint i = 0; i < self.openPositionMarketIds.length(); i++) {
             uint128 marketId = self.openPositionMarketIds.valueAt(i).to128();
 
